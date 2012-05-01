@@ -1,6 +1,6 @@
 ## Preface
 
-This vim-dotfiles repo has been forked from the one created by my pal Joël Perras. I don't clame credit or a complete understanding of anything in here. Please see the original.
+This vim-dotfiles repo has been forked from the one created by my pal Joël Perras. I don't claim credit or a complete understanding of anything in here. Please see the original.
 
 ## Vim dotfiles
 
