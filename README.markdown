@@ -1,3 +1,7 @@
+## Preface
+
+This vim-dotfiles repo has been forked from the one created by my pal Joël Perras. I don't clame credit or a complete understanding of anything in here. Please see the original.
+
 ## Vim dotfiles
 
 These are the vim runtime files that I use on a daily basis. Feel free to clone, modify, change, add, murder or remove portions of it at will.
