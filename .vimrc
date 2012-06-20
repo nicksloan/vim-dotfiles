@@ -44,9 +44,9 @@ Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
 
 " Python bundles
-Bundle 'kevinw/pyflakes-vim'
+"Bundle 'kevinw/pyflakes-vim'
 Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/pep8'
+"Bundle 'vim-scripts/pep8'
 Bundle 'atourino/jinja.vim'
 Bundle 'vim-scripts/python_match.vim'
 
@@ -133,10 +133,10 @@ endif
 set list listchars=tab:→\ ,trail:·
 
 " Tabs & spaces
-set tabstop=4     " a tab is four spaces
-set shiftwidth=4  " number of spaces to use for autoindenting
-set softtabstop=4
-set expandtab
+set tabstop=2     " a tab is four spaces
+set shiftwidth=2  " number of spaces to use for autoindenting
+set softtabstop=2
+set noexpandtab
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
@@ -185,7 +185,7 @@ autocmd FileType php setlocal colorcolumn=100
 
 " Python configurations
 """""""""""""""""""""""
-au BufNewFile,BufReadPost python setlocal shiftwidth=2 expandtab
+au BufNewFile,BufReadPost *.py setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python let g:pep8_map='<F4>'
 
