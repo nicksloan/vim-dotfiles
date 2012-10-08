@@ -44,9 +44,8 @@ Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
 
 " Python bundles
-"Bundle 'kevinw/pyflakes-vim'
+Bundle 'nvie/vim-flake8'
 Bundle 'fs111/pydoc.vim'
-"Bundle 'vim-scripts/pep8'
 Bundle 'atourino/jinja.vim'
 Bundle 'vim-scripts/python_match.vim'
 
@@ -187,7 +186,9 @@ autocmd FileType php setlocal colorcolumn=100
 """""""""""""""""""""""
 au BufNewFile,BufReadPost *.py setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType python setlocal colorcolumn=80
-autocmd FileType python let g:pep8_map='<F4>'
+"autocmd FileType python let g:pep8_map='<F4>'
+autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
 
 " Coffeescript configurations
 """""""""""""""""""""""""""""
