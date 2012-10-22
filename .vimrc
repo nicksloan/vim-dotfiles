@@ -44,10 +44,9 @@ Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
 
 " Python bundles
-Bundle 'nvie/vim-flake8'
 Bundle 'fs111/pydoc.vim'
-Bundle 'atourino/jinja.vim'
 Bundle 'vim-scripts/python_match.vim'
+Bundle 'nicksloan/Vim-Jinja2-Syntax'
 
 " Ruby specific
 Bundle "vim-ruby/vim-ruby"
@@ -187,8 +186,8 @@ autocmd FileType php setlocal colorcolumn=100
 au BufNewFile,BufReadPost *.py setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType python setlocal colorcolumn=80
 "autocmd FileType python let g:pep8_map='<F4>'
-autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
-autocmd BufWritePost *.py call Flake8()
+"autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
+"autocmd BufWritePost *.py call Flake8()
 
 " Coffeescript configurations
 """""""""""""""""""""""""""""
@@ -265,3 +264,6 @@ au Syntax * RainbowParenthesesLoadBraces
 set laststatus=2
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
+let g:syntastic_enable_baloons=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
