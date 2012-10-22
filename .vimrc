@@ -176,7 +176,7 @@ autocmd FileType markdown setlocal wrap linebreak nolist
 
 " Ruby Configurations
 """""""""""""""""""""
-autocmd filetype ruby set shiftwidth=2 tabstop=2
+autocmd FileType ruby set shiftwidth=2 tabstop=2
 
 " PHP Configurations
 """"""""""""""""""""
@@ -184,7 +184,7 @@ autocmd FileType php setlocal colorcolumn=100
 
 " Python configurations
 """""""""""""""""""""""
-au BufNewFile,BufReadPost *.py setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType python setlocal colorcolumn=80
 "autocmd FileType python let g:pep8_map='<F4>'
 autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
@@ -192,7 +192,7 @@ autocmd BufWritePost *.py call Flake8()
 
 " Coffeescript configurations
 """""""""""""""""""""""""""""
-au BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent
+auto BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent
 au BufNewFile,BufReadPost *.coffee setlocal shiftwidth=2 expandtab
 
 " Javascript configurations
