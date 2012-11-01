@@ -46,7 +46,7 @@ Bundle 'jcf/vim-latex'
 " Python bundles
 Bundle 'fs111/pydoc.vim'
 Bundle 'vim-scripts/python_match.vim'
-Bundle 'nicksloan/Vim-Jinja2-Syntax'
+Bundle 'Glench/Vim-Jinja2-Syntax'
 
 " Ruby specific
 Bundle "vim-ruby/vim-ruby"
@@ -96,14 +96,13 @@ au TabLeave * silent! :wa
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-
 " Colours
 colorscheme chance-of-storm
 
 " Basic
 syntax enable
 set number        " always show line numbers
-set hidden        " Allow un-saved buffers in background
+"set hidden        " Allow un-saved buffers in background
 set clipboard=unnamed " Share system clipboard.
 set backspace=indent,eol,start " Make backspace behave normally.
 set directory=/tmp// " swap files
