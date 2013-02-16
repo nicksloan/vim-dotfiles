@@ -67,11 +67,12 @@ filetype plugin indent on     " required!
 
 " Configurations
 """"""""""""""""
-if has('gui_running')
-	set background=light
-else
+"if has('gui_running')
+"	set background=light
+"else
 	set background=dark
-endif
+  set guifont=Anonymous\ Pro:h16
+"endif
 
 " Wildmenu completion
 """""""""""""""""""""
@@ -97,7 +98,8 @@ au TabLeave * silent! :wa
 au VimResized * exe "normal! \<c-w>="
 
 " Colours
-colorscheme chance-of-storm
+set t_Co=256
+colorscheme solarized
 
 " Basic
 syntax enable
