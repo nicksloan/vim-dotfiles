@@ -42,6 +42,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
+Bundle 'othree/html5.vim'
 
 " Python bundles
 Bundle 'fs111/pydoc.vim'
