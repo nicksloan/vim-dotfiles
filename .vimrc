@@ -42,6 +42,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
+"Bundle 'othree/html5.vim'
 
 " Python bundles
 Bundle 'fs111/pydoc.vim'
@@ -71,7 +72,7 @@ filetype plugin indent on     " required!
 "	set background=light
 "else
 	set background=dark
-  set guifont=Anonymous\ Pro:h16
+  set guifont=Source\ Code\ Pro:h15
 "endif
 
 " Wildmenu completion
