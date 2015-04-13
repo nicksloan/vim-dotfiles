@@ -2,11 +2,11 @@ set encoding=utf-8
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " Vundle help
 """"""""""""""
@@ -18,6 +18,9 @@ Bundle 'gmarik/vundle'
 
 " VCS
 Bundle 'tpope/vim-fugitive'
+
+" EditorConfig
+Bundle 'editorconfig/editorconfig-vim'
 
 " System
 Bundle 'scrooloose/nerdtree'
@@ -42,6 +45,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
+Bundle 'leafgarland/typescript-vim'
 "Bundle 'othree/html5.vim'
 
 " Python bundles
@@ -53,12 +57,15 @@ Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-endwise'
 
+" ctrlp instead
+Bundle 'git@github.com:kien/ctrlp.vim.git'
+
 " Non-github repos
-Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'git://git.wincent.com/command-t.git'
 
 " Fun, but not useful
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'skammer/vim-css-color'
+" Bundle 'skammer/vim-css-color'
 Bundle 'mgutz/vim-colors'
 Bundle 'ehamberg/vim-cute-python'
 Bundle 'tpope/vim-speeddating'
@@ -136,7 +143,7 @@ set list listchars=tab:→\ ,trail:·
 set tabstop=2     " a tab is four spaces
 set shiftwidth=2  " number of spaces to use for autoindenting
 set softtabstop=2
-set noexpandtab
+set expandtab
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
@@ -202,6 +209,8 @@ au BufNewFile,BufReadPost *.js setlocal shiftwidth=2 expandtab
 
 " Get jinja filetype selection working correctly for *.jinja.html files.
 au BufNewFile,BufReadPost *.jinja.html setlocal filetype=htmljinja
+
+au BufNewFile,BufReadPost *.sls setlocal filetype=yaml
 
 " Make sure we hilight extra whitespace in the most annoying way possible.
 highlight ExtraWhitespace ctermbg=red guibg=red
