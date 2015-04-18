@@ -108,6 +108,7 @@ au VimResized * exe "normal! \<c-w>="
 " Colours
 set t_Co=256
 colorscheme solarized
+au VimEnter * colorscheme solarized
 
 " Basic
 syntax enable
