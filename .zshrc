@@ -37,7 +37,6 @@ plugins=(git osx virtualenv virtualenvwrapper python ruby vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-alias vim=/usr/local/bin/nvim
-export EDITOR=/usr/local/bin/nvim
+export EDITOR=/usr/local/bin/vim
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
