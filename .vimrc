@@ -140,9 +140,9 @@ endif
 set list listchars=tab:→\ ,trail:·
 
 " Tabs & spaces
-set tabstop=2     " a tab is four spaces
-set shiftwidth=2  " number of spaces to use for autoindenting
-set softtabstop=2
+set tabstop=4     " a tab is four spaces
+set shiftwidth=4  " number of spaces to use for autoindenting
+set softtabstop=4
 set expandtab
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab      " insert tabs on the start of a line according to
@@ -211,6 +211,7 @@ au BufNewFile,BufReadPost *.js setlocal shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.jinja.html setlocal filetype=htmljinja
 
 au BufNewFile,BufReadPost *.sls setlocal filetype=yaml
+au BufNewFile,BufReadPost *.sls setlocal shiftwidth=2 expandtab
 
 " Make sure we hilight extra whitespace in the most annoying way possible.
 highlight ExtraWhitespace ctermbg=red guibg=red
