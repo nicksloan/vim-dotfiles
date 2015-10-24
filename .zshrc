@@ -40,3 +40,8 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=/usr/local/bin/vim
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
+# Wrap git automatically by adding the following to ~/.zshrc:
+
+eval "$(hub alias -s)"
+export PATH="/usr/local/sbin:$PATH"
+unsetopt auto_cd
