@@ -46,6 +46,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'groenewege/vim-less'
 Bundle 'jcf/vim-latex'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'markcornick/vim-terraform'
 "Bundle 'othree/html5.vim'
 
 " Python bundles
@@ -194,10 +195,13 @@ autocmd FileType php setlocal colorcolumn=100
 " Python configurations
 """""""""""""""""""""""
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-autocmd FileType python setlocal colorcolumn=80
+autocmd FileType python setlocal colorcolumn=100
+autocmd FileType python let g:syntastic_python_flake8_args='--max-line-length=99'
 "autocmd FileType python let g:pep8_map='<F4>'
 "autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
 "autocmd BufWritePost *.py call Flake8()
+
+autocmd FileType html let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute', '<form> lacks "action" attribute']
 
 " Coffeescript configurations
 """""""""""""""""""""""""""""
