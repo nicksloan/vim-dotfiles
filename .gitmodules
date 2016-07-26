@@ -1,3 +1,0 @@
-[submodule "vim-dotfiles"]
-	path = vim-dotfiles
-	url = git@github.com:nicksloan/vim-dotfiles.git
