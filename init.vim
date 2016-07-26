@@ -2,75 +2,74 @@ set encoding=utf-8
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/Vundle.vim'
+call plug#begin('~/.config/nvim/plugged')
 
 " Vundle help
 """"""""""""""
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PlugList          - list configured bundles
+" :PlugInstall(!)    - install(update) bundles
+" :PlugSearch(!) foo - search(or refresh cache first) for foo
+" :PlugClean(!)      - confirm(or auto-approve) removal of unused bundles
 
 
 " VCS
-Bundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " EditorConfig
-Bundle 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " System
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/Gist.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
-Bundle 'Raimondi/delimitMate'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'sophacles/vim-bundle-sparkup'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/Gist.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'ervandew/supertab'
+Plug 'Raimondi/delimitMate'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'sophacles/vim-bundle-sparkup'
 
 " Syntaxes and such.
-Bundle 'tpope/vim-cucumber'
-Bundle 'leshill/vim-json'
-Bundle 'tpope/vim-liquid'
-Bundle 'rodjek/vim-puppet'
-Bundle 'tpope/vim-haml'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'groenewege/vim-less'
-Bundle 'jcf/vim-latex'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'markcornick/vim-terraform'
-"Bundle 'othree/html5.vim'
+Plug 'tpope/vim-cucumber'
+Plug 'leshill/vim-json'
+Plug 'tpope/vim-liquid'
+Plug 'rodjek/vim-puppet'
+Plug 'tpope/vim-haml'
+Plug 'kchmck/vim-coffee-script'
+Plug 'plasticboy/vim-markdown'
+Plug 'groenewege/vim-less'
+Plug 'jcf/vim-latex'
+Plug 'leafgarland/typescript-vim'
+Plug 'markcornick/vim-terraform'
+"Plug 'othree/html5.vim'
 
 " Python bundles
-Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/python_match.vim'
-Bundle 'Glench/Vim-Jinja2-Syntax'
+Plug 'fs111/pydoc.vim'
+Plug 'vim-scripts/python_match.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Ruby specific
-Bundle "vim-ruby/vim-ruby"
-Bundle 'tpope/vim-endwise'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise'
 
 " ctrlp instead
-Bundle 'git@github.com:kien/ctrlp.vim.git'
+Plug 'git@github.com:kien/ctrlp.vim.git'
 
 " Non-github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plug 'git://git.wincent.com/command-t.git'
 
 " Fun, but not useful
-Bundle 'altercation/vim-colors-solarized'
-" Bundle 'skammer/vim-css-color'
-Bundle 'mgutz/vim-colors'
-Bundle 'ehamberg/vim-cute-python'
-Bundle 'tpope/vim-speeddating'
-Bundle 'Lokaltog/vim-powerline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
+" Plug 'skammer/vim-css-color'
+Plug 'mgutz/vim-colors'
+Plug 'ehamberg/vim-cute-python'
+Plug 'tpope/vim-speeddating'
+Plug 'vim-airline/vim-airline'
+
+call plug#end()
 
 filetype plugin indent on     " required!
 
@@ -108,8 +107,12 @@ au VimResized * exe "normal! \<c-w>="
 
 " Colours
 set t_Co=256
-colorscheme solarized
-au VimEnter * colorscheme solarized
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark " or light
+
+colorscheme OceanicNext
+au VimEnter * colorscheme OceanicNext
 
 " Basic
 syntax enable
@@ -266,7 +269,7 @@ nnoremap <Leader>t :CommandT<CR>
 nnoremap <Leader>g :NERDTreeToggle<CR>
 
 " SnipMate
-let g:snippets_dir = "~/.vim/bundle/snipmate-snippets"
+let g:snippets_dir = "~/.config/nvim/bundle/snipmate-snippets"
 
 " Sparkup
 let g:sparkupExecuteMapping = '<c-y>'
