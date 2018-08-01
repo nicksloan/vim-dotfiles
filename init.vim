@@ -43,7 +43,9 @@ Plug 'groenewege/vim-less'
 Plug 'jcf/vim-latex'
 Plug 'leafgarland/typescript-vim'
 Plug 'markcornick/vim-terraform'
-"Plug 'othree/html5.vim'
+Plug 'othree/html5.vim'
+Plug 'bdauria/angular-cli.vim'
+
 
 " Python bundles
 Plug 'fs111/pydoc.vim'
@@ -54,8 +56,9 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 
-" ctrlp instead
-Plug 'git@github.com:kien/ctrlp.vim.git'
+" fzf instead
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Non-github repos
 " Plug 'git://git.wincent.com/command-t.git'
@@ -68,6 +71,11 @@ Plug 'mgutz/vim-colors'
 Plug 'ehamberg/vim-cute-python'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-airline/vim-airline'
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'Shougo/echodoc.vim'
+
 
 call plug#end()
 
@@ -170,6 +178,16 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 nnoremap / /\v
 vnoremap / /\v
 
+" BETTER WINDOW/TAB NAVIGATION
+""""""""""""""""""""""""""""""
+nnoremap <Left> <C-W>h
+nnoremap <Right> <C-W>l
+nnoremap <Up> <C-W>k
+nnoremap <Down> <C-W>j
+
+nnoremap <S-Left> gT
+nnoremap <S-Right> gt
+
 
 " General auto-commands
 """""""""""""""""""""""
@@ -264,7 +282,7 @@ let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_autoshowtag = 1
 
 " Command-T
-nnoremap <Leader>t :CommandT<CR>
+nnoremap <C-p> :FZF<CR>
 
 " NERDTree
 nnoremap <Leader>g :NERDTreeToggle<CR>
@@ -288,3 +306,30 @@ let g:syntastic_auto_jump=0
 let g:syntastic_enable_baloons=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
+
+" angular-cli.vim
+autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
+let g:angular_cli_stylesheet_format = 'scss'
+
+" vim-js-pretty-template
+" autocmd FileType typescript JsPreTmpl html
+" autocmd FileType typescript syn clear foldBraces
+
+" nvim-typescript
+let g:deoplete#enable_at_startup = 1
+
+" language-server
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
