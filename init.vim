@@ -4,91 +4,27 @@ filetype off                   " required!
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Vundle help
-""""""""""""""
-" :PlugList          - list configured bundles
-" :PlugInstall(!)    - install(update) bundles
-" :PlugSearch(!) foo - search(or refresh cache first) for foo
-" :PlugClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-
-" VCS
-Plug 'tpope/vim-fugitive'
-
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
-" System
 Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/Gist.vim'
-Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
-Plug 'ervandew/supertab'
-Plug 'Raimondi/delimitMate'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'sophacles/vim-bundle-sparkup'
-
-" Syntaxes and such.
-Plug 'tpope/vim-cucumber'
-Plug 'leshill/vim-json'
-Plug 'tpope/vim-liquid'
-Plug 'rodjek/vim-puppet'
-Plug 'tpope/vim-haml'
-Plug 'kchmck/vim-coffee-script'
-Plug 'plasticboy/vim-markdown'
-Plug 'groenewege/vim-less'
-Plug 'jcf/vim-latex'
-Plug 'leafgarland/typescript-vim'
-Plug 'markcornick/vim-terraform'
-Plug 'othree/html5.vim'
-Plug 'bdauria/angular-cli.vim'
-
-
-" Python bundles
-Plug 'fs111/pydoc.vim'
-Plug 'vim-scripts/python_match.vim'
-Plug 'Glench/Vim-Jinja2-Syntax'
-
-" Ruby specific
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise'
-
-" fzf instead
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-
-" Non-github repos
-" Plug 'git://git.wincent.com/command-t.git'
-
-" Fun, but not useful
-Plug 'altercation/vim-colors-solarized'
-Plug 'mhartington/oceanic-next'
-" Plug 'skammer/vim-css-color'
-Plug 'mgutz/vim-colors'
+Plug 'ambv/black'
+" Plug 'natebosch/vim-lsc'
+Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
 Plug 'ehamberg/vim-cute-python'
-Plug 'tpope/vim-speeddating'
-Plug 'vim-airline/vim-airline'
-
-Plug 'Shougo/deoplete.nvim'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'Shougo/echodoc.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" COLOR SCHEMES
+"""""""""""""""
+Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
 
 filetype plugin indent on     " required!
-
-" Configurations
-""""""""""""""""
-"if has('gui_running')
-"	set background=light
-"else
-	set background=dark
-  set guifont=Source\ Code\ Pro:h15
-"endif
 
 " Wildmenu completion
 """""""""""""""""""""
@@ -120,8 +56,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set background=dark " or light
 
-colorscheme OceanicNext
-au VimEnter * colorscheme OceanicNext
+colorscheme palenight
+au VimEnter * colorscheme palenight
 
 " Basic
 syntax enable
@@ -144,11 +80,6 @@ set undolevels=1000      " use many muchos levels of undo
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-
-" Remove the toolbar if we're running under a GUI (e.g. MacVIM).
-if has("gui_running")
-  set guioptions=-t
-endif
 
 " Special characters for hilighting non-priting spaces/tabs/etc.
 set list listchars=tab:→\ ,trail:·
@@ -188,72 +119,6 @@ nnoremap <Down> <C-W>j
 nnoremap <S-Left> gT
 nnoremap <S-Right> gt
 
-
-" General auto-commands
-"""""""""""""""""""""""
-autocmd FileType * setlocal colorcolumn=0
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-
-" Get rid of trailing whitespace highlighting in mutt.
-autocmd FileType mail highlight clear ExtraWhitespace
-autocmd FileType mail setlocal listchars=
-
-" Crontab auto-commands
-"""""""""""""""""""""""
-autocmd FileType crontab setlocal backupcopy=yes
-
-" Markdown auto-commands
-""""""""""""""""""""""""
-autocmd FileType markdown setlocal wrap linebreak nolist
-
-" Ruby Configurations
-"""""""""""""""""""""
-autocmd FileType ruby set shiftwidth=2 tabstop=2
-
-" PHP Configurations
-""""""""""""""""""""
-autocmd FileType php setlocal colorcolumn=100
-
-" Python configurations
-"""""""""""""""""""""""
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-autocmd FileType python setlocal colorcolumn=100
-autocmd FileType python let g:syntastic_python_flake8_args='--max-line-length=99'
-"autocmd FileType python let g:pep8_map='<F4>'
-"autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
-"autocmd BufWritePost *.py call Flake8()
-
-autocmd FileType html let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute', '<form> lacks "action" attribute']
-
-" Coffeescript configurations
-"""""""""""""""""""""""""""""
-auto BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent
-au BufNewFile,BufReadPost *.coffee setlocal shiftwidth=2 expandtab
-
-" Javascript configurations
-"""""""""""""""""""""""""""
-au BufNewFile,BufReadPost *.js setlocal shiftwidth=2 expandtab
-
-" Get jinja filetype selection working correctly for *.jinja.html files.
-au BufNewFile,BufReadPost *.jinja.html setlocal filetype=htmljinja
-
-au BufNewFile,BufReadPost *.sls setlocal filetype=yaml
-au BufNewFile,BufReadPost *.sls setlocal shiftwidth=2 expandtab
-
-" Make sure we hilight extra whitespace in the most annoying way possible.
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Custom mappings
-""""""""""""""""""
-
-" Genral
-noremap <silent> <F3> :QFix<CR>
-
-
 " Change leader
 let mapleader = ","
 let g:mapleader = ","
@@ -264,72 +129,148 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 " Fix those pesky situations where you edit & need sudo to save
 cmap w!! w !sudo tee % >/dev/null
 
-
-" Plugin configurations
-""""""""""""""""""""""""
-
-" Gist
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 2
-let g:gist_show_privates = 1
-
-" TaskList
-"map <leader>l <Plug>TaskList
-
-" TagBar
-nnoremap <silent> <F2> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-let g:tagbar_autoshowtag = 1
-
-" Command-T
-nnoremap <C-p> :FZF<CR>
-
-" NERDTree
-nnoremap <Leader>g :NERDTreeToggle<CR>
-
-" SnipMate
-let g:snippets_dir = "~/.config/nvim/bundle/snipmate-snippets"
-
-" Sparkup
-let g:sparkupExecuteMapping = '<c-y>'
-let g:sparkupNextMapping = '<c-k>'
-
 " Double rainbow - What does it mean!?
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-set laststatus=2
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=0
-let g:syntastic_enable_baloons=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
+let g:python3_host_prog='~/.editorvenv/bin/python'
 
-" angular-cli.vim
-autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
-let g:angular_cli_stylesheet_format = 'scss'
+let g:black_virtualenv='~/.editorvenv/bin/'
+autocmd BufWritePre *.py execute ':Black'
 
-" vim-js-pretty-template
-" autocmd FileType typescript JsPreTmpl html
-" autocmd FileType typescript syn clear foldBraces
+let g:lsc_server_commands = {'python': '~/.editorvenv/bin/pyls'}
 
-" nvim-typescript
-let g:deoplete#enable_at_startup = 1
+" Use all the defaults (recommended):
+let g:lsc_auto_map = v:true
 
-" language-server
-" Required for operations modifying multiple buffers like rename.
+
+
+
+
+
+
+
+"""" COC Stuff
+" if hidden is not set, TextEdit might fail.
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ }
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
 
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
+" Better display for messages
+set cmdheight=2
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
