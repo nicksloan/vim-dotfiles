@@ -135,12 +135,11 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-let g:python3_host_prog='~/.editorvenv/bin/python'
-
-let g:black_virtualenv='~/.editorvenv/bin/'
+" let g:python3_host_prog='~/.editorvenv/bin/python'
+" let g:black_virtualenv='~/.editorvenv/bin/'
 autocmd BufWritePre *.py execute ':Black'
 
-let g:lsc_server_commands = {'python': '~/.editorvenv/bin/pyls'}
+" let g:lsc_server_commands = {'python': '~/.editorvenv/bin/pyls'}
 
 " Use all the defaults (recommended):
 let g:lsc_auto_map = v:true
